@@ -22,23 +22,10 @@ app.use((err, req, res, next) => {
 
 app.locals.moment = require('moment');
 
-app.get('/', (req, res) => {
-    res.render('index', { tweets })
-})
-app.get('/login', (req, res) => {
-    res.render('login');
-});
-  
-app.get('/signup', (req, res) => {
-    res.render('signup');
-});
+const index = require('./routes/index')
+const profile = require('./routes/profile')
 
-app.get('/profile', (req, res) => {
-    res.render('profile');
-});
-
-app.get('/profile/edit', (req, res) => {
-    res.render('editProfile');
-});
+app.use('/', index)
+app.use('/profile', profile)
 
 app.listen(port, () => console.log("http://localhost:8080/"))
