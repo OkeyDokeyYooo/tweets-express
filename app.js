@@ -4,9 +4,12 @@ const logger = require('morgan')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const path = require('path')
+const mongoose = require('mongoose')
 const tweets = require('./tweets');
-const port = 8080
+const port = process.env.PORT || 8080
+const url = 'mongodb://localhost:27017/webdxd' 
 
+mongoose.connect(url)
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false}))
 app.use(cookieParser())
