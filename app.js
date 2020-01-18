@@ -10,8 +10,7 @@ const session = require('express-session')
 const LocalStrategy = require('passport-local').Strategy
 const Tweets = require('./models/tweets')
 const port = process.env.PORT || 8080
-// const url = 'mongodb+srv://allen:k9kBdyFT6UAxLoMy@hackhub-on08q.mongodb.net/test?retryWrites=true&w=majority'
-const url = 'mongodb://localhost:27017/webdxd'
+const url = 'mongodb+srv://allen:k9kBdyFT6UAxLoMy@hackhub-on08q.mongodb.net/test?retryWrites=true&w=majority'
 
 app.use(session({
     secret: 'webdxd',
@@ -55,14 +54,14 @@ const profile = require('./routes/profile')
 app.use('/', index)
 app.use('/profile', profile)
 
-app.use((req, res, next) => {
-    const err = new Error('Page Not Found')
-    err.status = 404
-    next(err)
-})
+// app.use((req, res, next) => {
+//     const err = new Error('Page Not Found')
+//     err.status = 404
+//     next(err)
+// })
 
-app.use((err, req, res, next) => {
-    res.send(err.message)
-})
+// app.use((err, req, res, next) => {
+//     res.send(err.message)
+// })
 
 app.listen(port, () => console.log("http://localhost:8080/"))
